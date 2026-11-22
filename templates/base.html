@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="{{ ui.html_lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ meta.title }}</title>
+  <meta name="description" content="{{ meta.description }}">
+  <meta name="author" content="{{ profile.name_plain }}">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#08111f">
+{% if canonical %}
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:type" content="{{ 'profile' if page == 'home' else 'website' }}">
+  <meta property="og:title" content="{{ meta.title }}">
+  <meta property="og:description" content="{{ meta.description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:locale" content="{{ ui.og_locale }}">
+  <meta name="twitter:card" content="summary">
+{% else %}
+  <meta name="robots" content="noindex">
+{% endif %}
+  <link rel="icon" href="{{ pre }}static/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ pre }}static/css/style.css?v={{ version }}">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="{{ pre }}static/js/main.js?v={{ version }}" defer></script>
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#main">{{ ui.skip }}</a>
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="{{ link_pre }}index.html"{% if page == 'home' %} aria-current="page"{% endif %}>{{ profile.brand }}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+      <span class="visually-hidden">{{ ui.menu }}</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="{{ ui.nav_label }}">
+      <ul class="nav-list">
+{% for key, out in nav %}
+        <li><a href="{{ link_pre }}{{ out }}"{% if key == page %} aria-current="page"{% endif %}>{{ ui.nav[key] }}</a></li>
+{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© {{ year }} {{ profile.name }}</p>
+    <ul class="footer-links">
+      <li><a href="mailto:{{ links.email }}">Email</a></li>
+      <li><a href="{{ links.github }}" rel="me">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

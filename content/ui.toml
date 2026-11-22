@@ -1,0 +1,77 @@
+# Interface text (menu, headings, labels). One table per language.
+# To add French later: copy the [en] tables as [fr] and translate the values.
+
+[en]
+html_lang = "en"
+og_locale = "en_CA"
+skip = "Skip to main content"
+nav_label = "Main navigation"
+menu = "Menu"
+
+[en.nav]
+home = "Home"
+about = "About"
+skills = "Skills"
+projects = "Projects"
+training = "Training"
+contact = "Contact"
+
+[en.home]
+view_projects = "View Projects"
+github = "GitHub Profile"
+academic = "Academic Portfolio"
+work = "Selected work"
+all_projects = "Project details"
+scroll = "Scroll to introduction"
+
+[en.about]
+kicker = "Background"
+h1 = "About"
+research_h = "Doctoral research"
+quantum_h = "Quantum computing training"
+projects_h = "Software projects"
+academic_link = "Academic portfolio"
+training_link = "Training"
+projects_link = "Projects"
+
+[en.skills]
+kicker = "Technical skills"
+h1 = "Skills"
+lead = "Statuses reflect project evidence, not self-rated levels."
+legend = "Status legend"
+
+[en.projects]
+kicker = "Quantum software"
+h1 = "Projects"
+planned_h = "Planned"
+dev_status = "Development"
+code_status = "Code"
+provided = "Provided by the course"
+contribution = "My contribution"
+technologies = "Stack"
+concepts = "Concepts"
+verification = "Tests"
+tests_run = "Tests in this run"
+results = "Result"
+code_link = "Source code on GitHub"
+
+[en.training]
+kicker = "Quantum computing"
+h1 = "Training"
+programs_h = "Program"
+courses_h = "Courses"
+certifications_h = "Certifications"
+project = "Course project"
+
+[en.contact]
+kicker = "Get in touch"
+h1 = "Contact"
+email = "Institutional email"
+github = "GitHub"
+academic = "Academic portfolio"
+
+[en.notfound]
+kicker = "Error 404"
+h1 = "Page not found"
+text = "This page does not exist or has moved."
+back = "Back to home"

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from "macros.html" import accent, project_card, scene_canvas %}
+{% block head %}
+  <script type="application/ld+json">
+  {{ {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": profile.name_plain,
+    "jobTitle": "Mathematics PhD student",
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "Université de Sherbrooke"},
+    "email": "mailto:" ~ links.email,
+    "url": canonical,
+    "sameAs": [links.github, links.academic_portfolio],
+    "knowsAbout": ["Quantum computing", "Python", "NumPy", "Linear algebra", "Complex geometry", "Poisson geometry"]
+  } | tojson }}
+  </script>
+{% endblock %}
+{% block content %}
+<section class="scene scene--full">
+  {{ scene_canvas() }}
+  <div class="container scene-content">
+    <p class="kicker">{{ profile.role }}</p>
+    <h1 class="scene-title scene-title--xl">{{ profile.name }}</h1>
+    <p class="scene-sub">{{ profile.focus }}</p>
+    <a class="btn btn--light" href="projects.html">{{ ui.home.view_projects }}</a>
+    <p class="scene-links">
+      <a href="{{ links.github }}" rel="me">{{ ui.home.github }}</a>
+      <span aria-hidden="true">·</span>
+      <a href="{{ links.academic_portfolio }}" rel="me">{{ ui.home.academic }}</a>
+    </p>
+  </div>
+  <a class="scroll-cue" href="#intro" aria-label="{{ ui.home.scroll }}"><span aria-hidden="true"></span></a>
+</section>
+
+<section class="section" id="intro">
+  <div class="container">
+    <div class="card intro-card reveal">
+      <div>
+        <p class="chipbox">{{ profile.stack | join(" · ") }}</p>
+        {{ accent() }}
+        <p class="intro-text">{{ profile.intro }}</p>
+      </div>
+      <div class="goal">
+        <p class="kicker">{{ profile.goal_label }}</p>
+        <p class="goal-title">{{ profile.goal_title }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if projects or planned_projects %}
+<section class="section" aria-labelledby="work-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="work-title" class="section-title">{{ ui.home.work }}</h2>
+      <a class="section-link" href="projects.html">{{ ui.home.all_projects }} →</a>
+    </div>
+    <div class="grid grid--2">
+{% for p in projects + planned_projects %}
+      {{ project_card(p) }}
+{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

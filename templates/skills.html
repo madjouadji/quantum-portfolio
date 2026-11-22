@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head %}
+{% block content %}
+{{ page_head(ui.skills.kicker, ui.skills.h1, ui.skills.lead) }}
+<div class="container">
+  <ul class="legend reveal" aria-label="{{ ui.skills.legend }}">
+{% for key, s in skills.statuses.items() %}
+    <li><span class="mark mark--{{ key }}" aria-hidden="true"></span><strong>{{ s.label }}</strong> <span class="muted">· {{ s.help }}</span></li>
+{% endfor %}
+  </ul>
+
+  <div class="grid grid--2">
+{% for category in skills.categories %}
+    <section class="card reveal" aria-labelledby="cat-{{ loop.index }}">
+      <h2 id="cat-{{ loop.index }}" class="kicker">{{ category.name }}</h2>
+      <ul class="skill-chips">
+{% for s in category.skills %}
+        <li>
+{% if s.project is defined %}
+          <a class="skill-chip skill-chip--{{ s.status }}" href="projects.html#{{ s.project }}"><span class="mark mark--{{ s.status }}" aria-hidden="true"></span>{{ s.name }}<span class="visually-hidden"> — {{ skills.statuses[s.status].label }}: {{ project_by_id[s.project].title }}</span></a>
+{% else %}
+          <span class="skill-chip skill-chip--{{ s.status }}"><span class="mark mark--{{ s.status }}" aria-hidden="true"></span>{{ s.name }}<span class="visually-hidden"> — {{ skills.statuses[s.status].label }}</span></span>
+{% endif %}
+        </li>
+{% endfor %}
+      </ul>
+    </section>
+{% endfor %}
+  </div>
+</div>
+{% endblock %}

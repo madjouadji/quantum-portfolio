@@ -1,0 +1,78 @@
+# Profile, links and page metadata.
+#
+# Translation-ready: every text field can get a French version by adding the same key
+# with the suffix "_fr" (e.g. title_fr = "..."), then adding "fr" to `languages` below.
+# French pages would then be generated in site/fr/.
+
+languages = ["en"]
+
+# Public address of the site (canonical links, sitemap, social previews).
+# Target address: the site is NOT published there until the GitHub repository and Pages are set up.
+site_url = "https://madjouadji.github.io/quantum-portfolio"
+# Path of the site on GitHub Pages (used only by the 404 page, which can be served at any depth).
+base_path = "/quantum-portfolio/"
+
+[profile]
+name = "Adji MADJOU"
+name_plain = "Adji Madjou"          # used for search engines and structured data
+brand = "AM / Quantum"              # top-left of every page
+role = "Mathematics PhD Student"
+focus = "Quantum Computing & Scientific Python"
+location = "Sherbrooke, Québec, Canada"
+stack = ["Python", "NumPy", "Quantum Circuits"]
+
+intro = """
+Second-year PhD student in pure mathematics at Université de Sherbrooke, also enrolled in the \
+IQuCode microprogram in quantum computing. I build quantum software projects in Python and NumPy.\
+"""
+
+goal_label = "Career goal · 2029"
+goal_title = "Quantum Applications Scientist — Algorithms & Software"
+
+# About page: one list of short paragraphs per section.
+[about]
+research = [
+  "PhD in pure mathematics at Université de Sherbrooke, supervised by Maxence Mayrand: complex geometry, Poisson geometry, holomorphic symplectic groupoids and hyperkähler structures.",
+  "Teaching assistant in the Department of Mathematics since 2025 (calculus, linear algebra, geometry).",
+  "Earlier studies: Nantes Université (France), Université Gaston Berger (Senegal) and Université de Kara (Togo).",
+]
+quantum = [
+  "IQuCode microprogram, offered by Université de Sherbrooke in partnership with the University of Calgary, taken alongside the PhD. Current course: BSQ712.",
+]
+projects = [
+  "Python and NumPy for the computations, pytest for testing, Git and GitHub for version control. Each project states what I built, what was provided, and how it was checked.",
+]
+
+[links]
+github = "https://github.com/madjouadji"
+academic_portfolio = "https://madjouadji.github.io/portfolio/"
+email = "Adji.Madjou@USherbrooke.ca"
+
+# Title and description of each page (search engines and link previews).
+[pages.home]
+title = "Adji MADJOU — Mathematics PhD Student | Quantum Computing & Scientific Python"
+description = "Portfolio of Adji Madjou, mathematics PhD student at Université de Sherbrooke, enrolled in the IQuCode quantum computing microprogram and building quantum software projects in Python and NumPy."
+
+[pages.about]
+title = "About — Adji MADJOU"
+description = "Background of Adji Madjou: doctoral research in pure mathematics at Université de Sherbrooke, training in quantum computing (IQuCode) and software projects."
+
+[pages.skills]
+title = "Skills — Adji MADJOU"
+description = "Technical skills of Adji Madjou in Python, NumPy, Git, pytest and quantum computing, each with a status based on project evidence."
+
+[pages.projects]
+title = "Projects — Adji MADJOU"
+description = "Quantum computing projects by Adji Madjou: a NumPy quantum circuit simulator built for the BSQ712 course, and planned work."
+
+[pages.training]
+title = "Training — Adji MADJOU"
+description = "Quantum computing training of Adji Madjou: the IQuCode microprogram at Université de Sherbrooke and current courses."
+
+[pages.contact]
+title = "Contact — Adji MADJOU"
+description = "Contact Adji Madjou: institutional email, GitHub profile and academic portfolio."
+
+[pages.notfound]
+title = "Page not found — Adji MADJOU"
+description = "This page does not exist."

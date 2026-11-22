@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head %}
+{% block content %}
+{{ page_head(ui.notfound.kicker, ui.notfound.h1, ui.notfound.text) }}
+<div class="container">
+  <a class="btn btn--primary" href="{{ link_pre }}index.html">{{ ui.notfound.back }}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+# Projects shown on the Projects page (and on Home).
+#
+# HOW TO ADD A PROJECT: copy a [[projects]] block, change `id` (letters, digits, dashes),
+# fill in only the fields you can support with facts, delete the others, then run
+#   .venv/bin/python serve.py
+# Every page that lists projects is updated automatically.
+#
+# Fields (all optional except id, title, status, status_label, summary):
+#   id, title, summary, status, status_label, featured,
+#   code_availability, code_note, github_url,
+#   contribution[], provided[], technologies[], concepts[], verification{summary, tests[], scope}, results[]
+#
+# status: "completed", "in_progress" or "planned".
+#   Planned projects appear in a separate "Planned" section, with no results or tests.
+# github_url: ONLY if the repository is public and accessible. Leave it out otherwise.
+
+[[projects]]
+id = "bsq712-quantum-circuit-simulator"
+title = "Quantum Circuit Simulator"
+course = "BSQ712"
+featured = true
+status = "completed"
+status_label = "Completed — awaiting instructor review"
+code_availability = "Not publicly available yet"
+code_note = "To be published after the instructor's review."
+
+summary = """
+State-vector simulator of quantum circuits: gates as unitary matrices, qubits as a state vector, \
+measurements by sampling.\
+"""
+
+# Distinction between the course template and my own work, established from the repository history.
+contribution = [
+  "Implemented the simulator core: RY and controlled gates, qubit reordering, embedding a gate in a larger register, gate composition, state preparation, gate application and measurement sampling.",
+  "Completed the treasure-door circuit and built the Monty Hall circuit (three-qubit W state, extended to four qubits).",
+]
+provided = [
+  "Package skeleton and docstrings",
+  "Basic gates (X, Y, Z, H)",
+  "Test suite",
+  "Bell-state example",
+]
+
+technologies = ["Python", "NumPy", "pytest", "Git"]
+concepts = ["Unitary gates", "Controlled gates", "Tensor products", "State vectors", "Measurement sampling", "Bell & W states"]
+
+results = [
+  "Bell-state example: 1,000 simulated shots return only 00 and 11, as expected.",
+]
+
+[projects.verification]
+summary = "pytest · tests/test_gates.py — 9 of 9 tests passed in 1.01 s (exit code 0)."
+tests = [
+  "test_build_ry_gate",
+  "test_control",
+  "test_control_2",
+  "test_compose_gates",
+  "test_reorder_qubits_gate",
+  "test_reorder_qubits_gate_random",
+  "test_convert_to_more_qubits",
+  "test_c0x1c2",
+  "test_c0x2",
+]
+scope = "Covers this test file only: not a full validation of the simulator, nor a benchmark."
+
+
+[[projects]]
+id = "quantum-teleportation-simulator"
+title = "Quantum Teleportation Simulator"
+status = "planned"
+status_label = "Planned"
+summary = "Three-qubit teleportation protocol, with measurements and conditional corrections."

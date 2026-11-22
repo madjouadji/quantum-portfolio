@@ -1,0 +1,24 @@
+# Quantum training: programs, courses and certifications.
+#
+# Show only confirmed information. A course is "In progress" until its result is confirmed.
+
+# Certifications (e.g. Mitacs workshops). The section is hidden on the site while this list is empty.
+# Add one only once it is obtained and its exact title is confirmed, for example:
+#   certifications = [
+#     { name = "Exact certificate title", issuer = "Mitacs", date = "2027", url = "https://..." },
+#   ]
+# (`url` is optional: a public verification link.)
+certifications = []
+
+[[programs]]
+name = "IQuCode — Quantum Computing Microprogram"
+institution = "Université de Sherbrooke · in partnership with the University of Calgary"
+period = "Since Fall 2026"
+status = "In progress"
+description = "Complementary program taken alongside the PhD in mathematics."
+
+[[courses]]
+code = "BSQ712"
+status = "In progress"
+# Optional: title = "Full course title" (add it once confirmed).
+project = "bsq712-quantum-circuit-simulator"

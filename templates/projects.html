@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head, project_card, accent %}
+{% block content %}
+{{ page_head(ui.projects.kicker, ui.projects.h1) }}
+<div class="container stack">
+{% for p in projects %}
+  <article class="card project reveal" id="{{ p.id }}" aria-labelledby="{{ p.id }}-title">
+    <p class="kicker">{{ p.course if p.course is defined else ui.projects.kicker }}</p>
+    <h2 id="{{ p.id }}-title" class="project-title">{{ p.title }}</h2>
+    <p class="muted project-summary">{{ p.summary }}</p>
+{% if p.technologies is defined %}
+    <p class="chipbox">{{ p.technologies | join(" · ") }}</p>
+{% endif %}
+    {{ accent() }}
+
+    <dl class="facts">
+      <div><dt>{{ ui.projects.dev_status }}</dt><dd><span class="badge badge--{{ p.status }}">{{ p.status_label }}</span></dd></div>
+{% if p.code_availability is defined %}
+      <div><dt>{{ ui.projects.code_status }}</dt><dd><span class="badge badge--private">{{ p.code_availability }}</span>{% if p.code_note is defined %} <span class="small muted">{{ p.code_note }}</span>{% endif %}</dd></div>
+{% endif %}
+    </dl>
+
+{% if p.contribution is defined %}
+    <div class="split">
+      <section>
+        <h3>{{ ui.projects.contribution }}</h3>
+        <ul class="bullets">{% for item in p.contribution %}<li>{{ item }}</li>{% endfor %}</ul>
+      </section>
+{% if p.provided is defined %}
+      <section class="provided">
+        <h3>{{ ui.projects.provided }}</h3>
+        <ul class="bullets">{% for item in p.provided %}<li>{{ item }}</li>{% endfor %}</ul>
+      </section>
+{% endif %}
+    </div>
+{% endif %}
+
+{% if p.concepts is defined %}
+    <section>
+      <h3>{{ ui.projects.concepts }}</h3>
+      <ul class="tags">{% for c in p.concepts %}<li>{{ c }}</li>{% endfor %}</ul>
+    </section>
+{% endif %}
+
+{% if p.verification is defined or p.results is defined %}
+    <div class="split split--even">
+{% if p.verification is defined %}
+      <section class="panel">
+        <h3>{{ ui.projects.verification }}</h3>
+        <p>{{ p.verification.summary }}</p>
+{% if p.verification.tests is defined %}
+        <details>
+          <summary>{{ ui.projects.tests_run }} ({{ p.verification.tests | length }})</summary>
+          <ul class="test-list">{% for t in p.verification.tests %}<li><code>{{ t }}</code></li>{% endfor %}</ul>
+        </details>
+{% endif %}
+{% if p.verification.scope is defined %}
+        <p class="small muted note">{{ p.verification.scope }}</p>
+{% endif %}
+      </section>
+{% endif %}
+{% if p.results is defined %}
+      <section class="panel">
+        <h3>{{ ui.projects.results }}</h3>
+{% for r in p.results %}
+        <p>{{ r }}</p>
+{% endfor %}
+      </section>
+{% endif %}
+    </div>
+{% endif %}
+
+{% if p.github_url is defined %}
+    <p><a class="btn" href="{{ p.github_url }}">{{ ui.projects.code_link }} ↗</a></p>
+{% endif %}
+  </article>
+{% endfor %}
+
+{% if planned_projects %}
+  <section aria-labelledby="planned-title">
+    <h2 id="planned-title" class="section-title">{{ ui.projects.planned_h }}</h2>
+    <div class="grid grid--2">
+{% for p in planned_projects %}
+      {{ project_card(p, link=false) }}
+{% endfor %}
+    </div>
+  </section>
+{% endif %}
+</div>
+{% endblock %}

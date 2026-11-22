@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head %}
+{% block content %}
+{{ page_head(ui.contact.kicker, ui.contact.h1) }}
+<div class="container">
+  <ul class="grid grid--3 contact-list">
+    <li class="card reveal">
+      <p class="kicker">{{ ui.contact.email }}</p>
+      <a class="contact-value" href="mailto:{{ links.email }}">{{ links.email }}</a>
+    </li>
+    <li class="card reveal">
+      <p class="kicker">{{ ui.contact.github }}</p>
+      <a class="contact-value" href="{{ links.github }}" rel="me">{{ links.github | replace("https://", "") }}</a>
+    </li>
+    <li class="card reveal">
+      <p class="kicker">{{ ui.contact.academic }}</p>
+      <a class="contact-value" href="{{ links.academic_portfolio }}" rel="me">{{ links.academic_portfolio | replace("https://", "") | trim("/") }}</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}

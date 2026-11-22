@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head %}
+{% block content %}
+{{ page_head(ui.training.kicker, ui.training.h1) }}
+<div class="container">
+  <div class="grid grid--2">
+{% for prog in training.programs %}
+    <article class="card reveal">
+      <p class="kicker">{{ ui.training.programs_h }} · {{ prog.period }}</p>
+      <h2 class="card-title">{{ prog.name }}</h2>
+      <p class="muted">{{ prog.institution }}</p>
+      <p class="muted">{{ prog.description }}</p>
+      <span class="badge badge--in_progress">{{ prog.status }}</span>
+    </article>
+{% endfor %}
+{% for c in training.courses %}
+    <article class="card reveal">
+      <p class="kicker">{{ ui.training.courses_h }}</p>
+      <h2 class="card-title">{{ c.code }}{% if c.title is defined %} — {{ c.title }}{% endif %}</h2>
+{% if c.project is defined %}
+      <p class="muted">{{ ui.training.project }}: <a href="projects.html#{{ c.project }}">{{ project_by_id[c.project].title }}</a></p>
+{% endif %}
+      <span class="badge badge--in_progress">{{ c.status }}</span>
+    </article>
+{% endfor %}
+  </div>
+
+{% if training.certifications %}
+  <section class="section" aria-labelledby="certs-title">
+    <h2 id="certs-title" class="section-title">{{ ui.training.certifications_h }}</h2>
+    <div class="grid grid--2">
+{% for cert in training.certifications %}
+      <article class="card reveal">
+        <p class="kicker">{{ cert.issuer }} · {{ cert.date }}</p>
+        <h3 class="card-title">{% if cert.url is defined %}<a href="{{ cert.url }}">{{ cert.name }}</a>{% else %}{{ cert.name }}{% endif %}</h3>
+      </article>
+{% endfor %}
+    </div>
+  </section>
+{% endif %}
+</div>
+{% endblock %}

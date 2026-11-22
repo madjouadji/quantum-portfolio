@@ -1,0 +1,12 @@
+# Generated site (rebuilt by build.py and by GitHub Actions)
+site/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS / editors
+.DS_Store
+.idea/
+.vscode/

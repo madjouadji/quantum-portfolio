@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% from "macros.html" import page_head %}
+{% block content %}
+{{ page_head(ui.about.kicker, ui.about.h1) }}
+<div class="container">
+  <div class="grid grid--3">
+{% for key, href, label in [("research", links.academic_portfolio, ui.about.academic_link), ("quantum", "training.html", ui.about.training_link), ("projects", "projects.html", ui.about.projects_link)] %}
+    <section class="card reveal" aria-labelledby="about-{{ key }}">
+      <p class="step" aria-hidden="true">0{{ loop.index }}</p>
+      <h2 id="about-{{ key }}" class="card-title">{{ ui.about[key ~ "_h"] }}</h2>
+{% for paragraph in site.about[key] %}
+      <p class="muted">{{ paragraph }}</p>
+{% endfor %}
+      <a class="card-link" href="{{ href }}"{% if key == "research" %} rel="me"{% endif %}>{{ label }} →</a>
+    </section>
+{% endfor %}
+  </div>
+</div>
+{% endblock %}

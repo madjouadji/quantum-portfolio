@@ -1,0 +1,60 @@
+# Technical skills, grouped by category.
+#
+# status (see [statuses] below):
+#   "demonstrated"  Demonstrated in Project: used in a listed project (needs `project` = a project id)
+#   "practicing"    Practicing: in regular use, not yet shown in a listed project
+#   "learning"      Learning: currently being learned
+#   "research"      Doctoral research: area of my PhD research
+#   "background"    Academic background: part of my mathematical training
+# No percentages or levels.
+
+[statuses.demonstrated]
+label = "Demonstrated in Project"
+help = "Used in a listed project"
+[statuses.practicing]
+label = "Practicing"
+help = "In regular use"
+[statuses.learning]
+label = "Learning"
+help = "Currently learning"
+[statuses.research]
+label = "Doctoral research"
+help = "PhD research area"
+[statuses.background]
+label = "Academic background"
+help = "University training"
+
+[[categories]]
+name = "Programming & Scientific Computing"
+skills = [
+  { name = "Python", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "NumPy", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+]
+
+[[categories]]
+name = "Software Development"
+skills = [
+  { name = "Git", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "GitHub", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "pytest", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "Black", status = "practicing" },
+  { name = "Modular programming", status = "practicing" },
+]
+
+[[categories]]
+name = "Quantum Computing"
+skills = [
+  { name = "Quantum circuits", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "Quantum gates", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "State vectors", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "Tensor products", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+  { name = "Quantum measurements", status = "demonstrated", project = "bsq712-quantum-circuit-simulator" },
+]
+
+[[categories]]
+name = "Mathematical Background"
+skills = [
+  { name = "Linear algebra", status = "background" },
+  { name = "Complex geometry", status = "research" },
+  { name = "Poisson geometry", status = "research" },
+]

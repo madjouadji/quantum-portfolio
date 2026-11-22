@@ -1,0 +1,43 @@
+{# Reusable pieces shared by several pages. #}
+
+{# Decorative two-segment accent line, as in the theme. #}
+{% macro accent() -%}
+<span class="accent" aria-hidden="true"><span></span><span></span></span>
+{%- endmacro %}
+
+{# Animated quantum scene used behind every page heading (drawn by main.js). #}
+{% macro scene_canvas() -%}
+<canvas class="scene-canvas" aria-hidden="true"></canvas>
+{%- endmacro %}
+
+{# Page heading: full-width animated band with kicker, title and accent line. #}
+{% macro page_head(kicker, title, lead=none) -%}
+<section class="scene scene--page">
+  {{ scene_canvas() }}
+  <div class="container scene-content">
+    <p class="kicker">{{ kicker }}</p>
+    <h1 class="scene-title">{{ title }}</h1>
+    {{ accent() }}
+  </div>
+</section>
+{% if lead %}
+<div class="container"><p class="lead page-lead">{{ lead }}</p></div>
+{% endif %}
+{%- endmacro %}
+
+{# Compact project card (Home and planned projects). #}
+{% macro project_card(p, link=true) -%}
+<article class="card project-card reveal" id="{{ 'card-' ~ p.id if link else p.id }}">
+{% if p.course is defined %}
+  <p class="kicker">{{ p.course }}</p>
+{% endif %}
+  <h3 class="card-title">{% if link %}<a href="projects.html#{{ p.id }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+  <p class="muted">{{ p.summary }}</p>
+  <div class="card-foot">
+    <span class="badge badge--{{ p.status }}">{{ p.status_label }}</span>
+{% if p.technologies is defined %}
+    <p class="chipbox">{{ p.technologies | join(" · ") }}</p>
+{% endif %}
+  </div>
+</article>
+{%- endmacro %}
