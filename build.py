@@ -119,6 +119,13 @@ def build() -> None:
         shutil.rmtree(OUTPUT)  # always regenerated: never edit files in site/
     OUTPUT.mkdir()
     shutil.copytree(ROOT / "static", OUTPUT / "static")
+    # Search-engine verification files (e.g. Google Search Console): copied to the site root.
+    # Never delete them: Google checks them again from time to time.
+    verification = ROOT / "verification"
+    if verification.is_dir():
+        for f in verification.iterdir():
+            if f.is_file():
+                shutil.copy2(f, OUTPUT / f.name)
 
     env = Environment(
         loader=FileSystemLoader(ROOT / "templates"),

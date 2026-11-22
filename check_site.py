@@ -52,7 +52,9 @@ def main() -> int:
     if not SITE.exists():
         print("site/ not found: run python3 build.py first")
         return 1
-    pages = sorted(SITE.rglob("*.html"))
+    verification = ROOT / "verification"
+    skipped = {f.name for f in verification.iterdir()} if verification.is_dir() else set()
+    pages = sorted(p for p in SITE.rglob("*.html") if p.name not in skipped)
     parsed = {}
     for page in pages:
         p = PageParser()

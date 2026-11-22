@@ -31,6 +31,7 @@ templates/               page layouts (Jinja2): base.html + one template per pag
 static/css/style.css     presentation (colours defined once at the top)
 static/js/main.js        behaviour: mobile menu, reveal effect, animated circuit background
 static/img/favicon.svg
+verification/            Google Search Console file, copied to the site root (do not delete)
 build.py                 generates site/ (never edit site/ by hand)
 serve.py                 local preview under /quantum-portfolio/, like GitHub Pages
 check_site.py            checks links, assets, anchors and page structure
